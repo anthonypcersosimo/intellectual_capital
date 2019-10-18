@@ -1,0 +1,33 @@
+require("dotenv").config();
+
+const path = require("path");
+const express = require("express");
+const session = require("express-session");
+const morgan = require("morgan");
+const mongoose = require("mongoose");
+
+const PORT = process.env.PORT || 3001;
+
+const app = express()
+  // middlewares
+  .use(express.urlencoded({ extended: true }))
+  .use(express.json())
+  .use(morgan("dev"))
+
+  // routes
+  .use(require("./routes"));
+
+// static files
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.resolve(__dirname, "..", "build")));
+}
+
+// connect to mongo DB
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true
+});
+
+// start server
+app.listen(PORT, () => {
+  console.log(`🌎  ==> HTML/API server now on port ${PORT}!`);
+});
