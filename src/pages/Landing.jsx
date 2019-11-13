@@ -1,43 +1,24 @@
 import React, { Component } from "react";
 
 import "./styles/landing.css";
-import {Form, Button} from "react-bootstrap";
-
 
 class Landing extends Component {
   state = {
-      message: 'hello'
-  }
-
-  handleSubmit() {
-    console.log('hello!');
-  }
+    page: "landing"
+  };
 
   render() {
     return (
       <>
-        <h1>This is the landing page.</h1>
+        <h1>This is the {this.state.page} page</h1>
         <br></br>
-        <Form>
-          <Form.Group controlId='formBasicEmail'>
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type='email' placeholder='Enter email' />
-            <Form.Text className='text-muted'>
-              We'll never share your email with anyone else.
-            </Form.Text>
-          </Form.Group>
-
-          <Form.Group controlId='formBasicPassword'>
-            <Form.Label>Password</Form.Label>
-            <Form.Control type='password' placeholder='Password' />
-          </Form.Group>
-          <Form.Group controlId='formBasicCheckbox'>
-            <Form.Check type='checkbox' label='Check me out' />
-          </Form.Group>
-          <Button onClick={this.handleSubmit} variant='primary' type='submit'>
-            Submit
-          </Button>
-        </Form>
+        <h3>
+          Have industry knowledge to share? You've come to the right place.
+        </h3>
+        <h3>
+          Need to utilize industry knowledge without hiring? You've come to the
+          right place.
+        </h3>
       </>
     );
   }
